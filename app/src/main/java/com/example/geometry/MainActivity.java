@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
             strokes = makeStroke();
             adapter = new MyAdapter(this, strokes);
             lv.setAdapter(adapter);
+            binding.editText1.setText("");
+            binding.editText2.setText("");
+            binding.editText3.setText("");
         });
         binding.btnCheck.setOnClickListener(v -> {
             repository.get(binding.editText1.getText().toString(),0);
