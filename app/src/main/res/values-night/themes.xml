@@ -34,6 +34,10 @@
         <item name="trackTint">@color/yellow</item>
 
     </style>
+    <style name="IMAGE">
+        <item name="background">@drawable/correct_dark</item>
+
+    </style>
 
 
 

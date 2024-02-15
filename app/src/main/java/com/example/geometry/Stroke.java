@@ -3,7 +3,7 @@ package com.example.geometry;
 public class Stroke {
     private String function;
     private String angle;
-    private int answer=-1;
+    private int answer=-2;
 
     public Stroke(String function, String angle) {
         this.function = function;
