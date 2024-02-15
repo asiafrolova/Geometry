@@ -2,10 +2,48 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Geometry" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/blue</item>
+        <item name="android:icon">@drawable/baseline_contact_support_24</item>
+        <item name="android:roundIcon">@drawable/baseline_contact_support_24</item>
+
 
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+
+    </style>
+    <style name="Theme.Geometry" parent="Base.Theme.Geometry" />
+
+
+    <style name="SCREEN" >
+        <item name="android:background">@color/white</item>
     </style>
 
-    <style name="Theme.Geometry" parent="Base.Theme.Geometry" />
+    <style name="TEXT">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="BUTTON">
+        <item name="android:background">@drawable/button_style</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="VIEW">
+        <item name="android:background">@drawable/help</item>
+    </style>
+
+    <style name="EDITTEXT">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="SWITCH">
+        <item name="thumbTint">@color/dark_blue</item>
+        <item name="trackTint">@color/blue</item>
+
+    </style>
+
+
+
+
+
+
+
 </resources>

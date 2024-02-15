@@ -3,10 +3,13 @@ package com.example.geometry;
 import static android.app.PendingIntent.getActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -22,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     MyAdapter adapter;
     Stroke[] strokes;
     Random random;
+
+    boolean night;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +75,36 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }).show();
         });
+        //getSupportActionBar().hide();
+        sharedPreferences = getSharedPreferences("MODE",MODE_PRIVATE);
+        night = sharedPreferences.getBoolean("night",false);
+
+            if(night){
+                binding.darkOrLight.setChecked(true);
+                getDelegate().setLocalNightMode(
+                        AppCompatDelegate.MODE_NIGHT_YES);;
+
+            }
+
+
+        binding.darkOrLight.setOnClickListener(v -> {
+            if(night){
+                getDelegate().setLocalNightMode(
+                    AppCompatDelegate.MODE_NIGHT_NO);
+                editor = sharedPreferences.edit();
+                editor.putBoolean("night",false);
+
+            }
+            else{
+                getDelegate().setLocalNightMode(
+                    AppCompatDelegate.MODE_NIGHT_YES);
+                editor = sharedPreferences.edit();
+                editor.putBoolean("night",true);
+
+            }
+            editor.commit();
+        });
+
 
 
 
@@ -102,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 });
         return builder.create();
     }
+
 
     Stroke[] checkAnswers(Stroke[] strokes, String[] answers) {
 

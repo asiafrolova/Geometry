@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    style="@style/SCREEN"
+    >
 
 
 
@@ -20,6 +22,7 @@
         android:orientation="horizontal">
 
         <ListView
+
             android:id="@+id/listView"
 
             android:layout_width="140dp"
@@ -41,18 +44,22 @@
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="vertical">
             <EditText
+                style="@style/EDITTEXT"
+
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/editText1">
 
             </EditText>
             <EditText
+                style="@style/EDITTEXT"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/editText2">
 
             </EditText>
             <EditText
+                style="@style/EDITTEXT"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/editText3">
@@ -63,6 +70,8 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <Button
+        style="@style/BUTTON"
+
         android:id="@+id/btnCheck"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
@@ -76,13 +85,13 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
         android:fontFamily="@font/pfdin"
         android:textSize="20dp"
-        android:textColor="@color/white"
-        android:background="@drawable/button_style"
         android:textAllCaps="false">
 
     </Button>
 
     <Button
+        style="@style/BUTTON"
+
         android:id="@+id/btnAgain"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -96,8 +105,6 @@
         app:layout_constraintTop_toBottomOf="@id/btnCheck"
         android:fontFamily="@font/pfdin"
         android:textSize="20dp"
-        android:textColor="@color/white"
-        android:background="@drawable/button_style"
         android:textAllCaps="false"
 
         >
@@ -105,15 +112,28 @@
     </Button>
 
     <View
+        style="@style/VIEW"
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         android:layout_margin="10dp"
-        android:background="@drawable/help"
         android:id="@+id/help"
         >
 
     </View>
+    <androidx.appcompat.widget.SwitchCompat
+        style="@style/SWITCH"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="30dp"
+        android:id="@+id/dark_or_light"
+
+
+        >
+
+    </androidx.appcompat.widget.SwitchCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
