@@ -43,9 +43,6 @@ public class MainActivity extends AppCompatActivity {
         repository=Repository.newInstance();
         strokes = makeStroke();
 
-        /*adapter = new MyAdapter(this, strokes);
-        RecyclerView lv = (RecyclerView) findViewById(R.id.listView);
-        lv.setAdapter(adapter);*/
         adapter = new MyAdapter();
         adapter.setStrokeList(strokes);
         binding.listView.setAdapter(adapter);
@@ -58,15 +55,11 @@ public class MainActivity extends AppCompatActivity {
             adapter = new MyAdapter();
             adapter.setStrokeList(strokes);
             binding.listView.setAdapter(adapter);
-            /*binding.editText1.setText("");
-            binding.editText2.setText("");
-            binding.editText3.setText("");*/
+
         });
         binding.btnCheck.setOnClickListener(v -> {
             repository.setNewFunctions(false);
-            /*repository.get(binding.editText1.getText().toString(),0);
-            repository.get(binding.editText2.getText().toString(),1);
-            repository.get(binding.editText3.getText().toString(),2);*/
+
             checkAnswers(strokes,repository.getRepository());
             adapter = new MyAdapter();
             adapter.setStrokeList(strokes);
@@ -80,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
                     .setMessage("1. Числа с корнем пишутся без него \n " +
                             "Пример: cos 45 = 2/2 \n" +
                             "2.Если значения не существует напишите тире \n" +
-                            "Пример: tg 180 = -")
+                            "Пример: tg 180 = - \n"+
+                            "3. В случае удаления отступа (пробела) ответ будет засчитан как неверный")
                     .setIcon(R.drawable.help)
                     .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -134,9 +128,7 @@ public class MainActivity extends AppCompatActivity {
             repository.get(" ",i);
             strokes.add(new Stroke(functions[random.nextInt(functions.length)]
                     , angels[random.nextInt(angels.length)]));
-            /*strokes[i] = new Stroke(
-                    functions[random.nextInt(functions.length)]
-                    , angels[random.nextInt(angels.length)]);*/
+
 
         }
         return strokes;
@@ -165,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             String question = strokes.get(i).getFunction() + strokes.get(i).getAngle();
             switch (question) {
                 case ("cos2n"):
-                    if (repository.getRepository()[i].equals("1")){
+                    if (repository.getRepository()[i].equals(" 1")){
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -173,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("cos3n/2"):
-                    if (repository.getRepository()[i].equals("0")) {
+                    if (repository.getRepository()[i].equals(" 0")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -181,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("cosn"):
-                    if (repository.getRepository()[i].equals("-1")) {
+                    if (repository.getRepository()[i].equals(" -1")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -189,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("cosn/2"):
-                    if (repository.getRepository()[i].equals("0")) {
+                    if (repository.getRepository()[i].equals(" 0")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -197,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("cosn/3"):
-                    if (repository.getRepository()[i].equals("1/2")) {
+                    if (repository.getRepository()[i].equals(" 1/2")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -205,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("cosn/4"):
-                    if (repository.getRepository()[i].equals("2/2")) {
+                    if (repository.getRepository()[i].equals(" 2/2")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -213,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("cosn/6"):
-                    if (repository.getRepository()[i].equals("3/2")) {
+                    if (repository.getRepository()[i].equals(" 3/2")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -223,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case ("sin2n"):
-                    if (repository.getRepository()[i].equals("0")) {
+                    if (repository.getRepository()[i].equals(" 0")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -231,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("sin3n/2"):
-                    if (repository.getRepository()[i].equals("-1")) {
+                    if (repository.getRepository()[i].equals(" -1")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -239,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("sinn"):
-                    if (repository.getRepository()[i].equals("0")) {
+                    if (repository.getRepository()[i].equals(" 0")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -247,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("sinn/2"):
-                    if (repository.getRepository()[i].equals("1")) {
+                    if (repository.getRepository()[i].equals(" 1")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -255,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("sinn/3"):
-                    if (repository.getRepository()[i].equals("3/2")) {
+                    if (repository.getRepository()[i].equals(" 3/2")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -263,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("sinn/4"):
-                    if (repository.getRepository()[i].equals("2/2")) {
+                    if (repository.getRepository()[i].equals(" 2/2")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -271,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("sinn/6"):
-                    if (repository.getRepository()[i].equals("1/2")) {
+                    if (repository.getRepository()[i].equals(" 1/2")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -280,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case ("tg2n"):
-                    if (repository.getRepository()[i].equals("0")) {
+                    if (repository.getRepository()[i].equals(" 0")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -288,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("tg3n/2"):
-                    if (repository.getRepository()[i].equals("-")) {
+                    if (repository.getRepository()[i].equals(" -")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -296,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("tgn"):
-                    if (repository.getRepository()[i].equals("0")) {
+                    if (repository.getRepository()[i].equals(" 0")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -304,7 +296,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("tgn/2"):
-                    if (repository.getRepository()[i].equals("-")) {
+                    if (repository.getRepository()[i].equals(" -")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -312,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("tgn/3"):
-                    if (repository.getRepository()[i].equals("3")) {
+                    if (repository.getRepository()[i].equals(" 3")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -320,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("tgn/4"):
-                    if (repository.getRepository()[i].equals("1")) {
+                    if (repository.getRepository()[i].equals(" 1")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -328,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("tgn/6"):
-                    if (repository.getRepository()[i].equals("3/3")) {
+                    if (repository.getRepository()[i].equals(" 3/3")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -337,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case ("ctg2n"):
-                    if (repository.getRepository()[i].equals("-")) {
+                    if (repository.getRepository()[i].equals(" -")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -345,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("ctg3n/2"):
-                    if (repository.getRepository()[i].equals("0")) {
+                    if (repository.getRepository()[i].equals(" 0")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -353,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("ctgn"):
-                    if (repository.getRepository()[i].equals("-")) {
+                    if (repository.getRepository()[i].equals(" -")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -361,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("ctgn/2"):
-                    if (repository.getRepository()[i].equals("0")) {
+                    if (repository.getRepository()[i].equals(" 0")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -369,7 +361,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("ctgn/3"):
-                    if (repository.getRepository()[i].equals("3/3")) {
+                    if (repository.getRepository()[i].equals(" 3/3")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -377,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("ctgn/4"):
-                    if (repository.getRepository()[i].equals("1")) {
+                    if (repository.getRepository()[i].equals(" 1")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);
@@ -385,7 +377,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case ("ctgn/6"):
-                    if (repository.getRepository()[i].equals("3")) {
+                    if (repository.getRepository()[i].equals(" 3")) {
                         strokes.get(i).setAnswer(1);
                     } else {
                         strokes.get(i).setAnswer(0);

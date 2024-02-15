@@ -27,11 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.StrokeViewHolder> 
     private List<Stroke> strokes = new ArrayList<>();
 
     Repository repository=Repository.newInstance();
-    /*public MyAdapter(@NonNull Context context, Stroke[] arr) {
-        super(context, R.layout.adapter_item,arr);
-        notifyDataSetChanged();
 
-    }*/
 
     public void setStrokeList(List<Stroke> strokes) {
         this.strokes = strokes;
@@ -51,7 +47,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.StrokeViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull StrokeViewHolder holder, int position) {
         Stroke stroke = strokes.get(position);
-        holder.binding.textView.setText(stroke.getFunction()+" "+stroke.getAngle()+"= ");
+        holder.binding.textView.setText(stroke.getFunction()+" "+stroke.getAngle()+" = ");
 
         if(!repository.isNewFunctions()){
             holder.binding.editText.setText(repository.getRepository()[position]);
@@ -65,7 +61,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.StrokeViewHolder> 
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                repository.get(s.toString(),position);
+                if(!s.toString().isEmpty()) {
+                    repository.get(s.toString(),position);
+                }
+                else{
+                    repository.get(" ",position);
+                }
             }
 
             @Override
