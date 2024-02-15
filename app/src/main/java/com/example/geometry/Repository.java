@@ -7,9 +7,11 @@ import java.util.List;
 public class Repository {
     private boolean night = true;
     private boolean newFunctions;
-    private String[] answers = new String[3];
+    private String[] answers = {"","",""};
     private String[] correctAnswers = new String[3];
     private static Repository instance = null;
+
+
 
     public static Repository newInstance() {
         if (instance == null) {

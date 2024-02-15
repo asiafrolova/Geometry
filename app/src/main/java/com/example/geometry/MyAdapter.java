@@ -50,8 +50,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.StrokeViewHolder> 
         holder.binding.textView.setText(stroke.getFunction()+" "+stroke.getAngle()+" = ");
 
         if(!repository.isNewFunctions()){
-            holder.binding.editText.setText(repository.getRepository()[position]);
+            if(repository.getRepository()[position].equals(" ")){
+                holder.binding.editText.setText("");
+            }
+            else{
+                holder.binding.editText.setText(repository.getRepository()[position]);
+            }
+
         }
+
 
         holder.binding.editText.addTextChangedListener(new TextWatcher() {
             @Override
